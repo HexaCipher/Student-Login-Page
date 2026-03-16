@@ -35,7 +35,7 @@ cd login_page_v2
 
 **Option A: Local Development**
 
-1. Open `config/config.js`
+1. Open `public/config/config.js`
 2. Replace the placeholder values:
 
 ```javascript
@@ -91,7 +91,7 @@ Set environment variables in Vercel dashboard (Settings → Environment Variable
 
 **For other platforms:**
 
-Simply upload all files. Make sure `config/config.js` has your credentials filled in.
+Simply upload all files. Make sure `public/config/config.js` has your credentials filled in.
 
 ### 6. Test
 
@@ -103,20 +103,20 @@ Open `public/index.html` in your browser or visit your deployed URL.
 
 ```
 login_page_v2/
-├── public/                     # HTML pages
+├── public/                     # Deployable app root
 │   ├── index.html              # Login page (Email/Student ID tabs)
 │   ├── signup.html             # User registration form
 │   ├── forgot-password.html    # Password reset flow
-│   └── dashboard.html          # Protected user dashboard
-├── assets/                     # Static assets
-│   ├── css/
-│   │   └── style.css           # Complete design system
-│   └── js/
-│       ├── supabase.js         # Supabase client initialization
-│       ├── auth.js             # Authentication logic
-│       └── dashboard.js        # Dashboard functionality
-├── config/
-│   └── config.js               # Environment configuration
+│   ├── dashboard.html          # Protected user dashboard
+│   ├── assets/                 # Static assets
+│   │   ├── css/
+│   │   │   └── style.css       # Complete design system
+│   │   └── js/
+│   │       ├── supabase.js     # Supabase client initialization
+│   │       ├── auth.js         # Authentication logic
+│   │       └── dashboard.js    # Dashboard functionality
+│   └── config/
+│       └── config.js           # Environment configuration
 ├── docs/                       # Documentation
 │   ├── SETUP_SUPABASE.sql      # Database setup script
 │   └── ARCHITECTURE.md         # Technical documentation
@@ -161,7 +161,7 @@ login_page_v2/
 ### Session Management
 
 - Sessions are automatically persisted by Supabase
-- `assets/js/dashboard.js` checks for active session on page load
+- `public/assets/js/dashboard.js` checks for active session on page load
 - If no session exists, redirects to login
 - Sign out clears session and redirects to login
 
@@ -183,7 +183,7 @@ login_page_v2/
 | `SUPABASE_ANON_KEY` | Your Supabase anon/public key | Yes |
 
 **Local Development:**
-Edit `config.js` directly with your credentials.
+Edit `public/config/config.js` directly with your credentials.
 
 **Production (Vercel):**
 Set in Vercel dashboard → Settings → Environment Variables.
@@ -224,9 +224,9 @@ Set in Vercel dashboard → Settings → Environment Variables.
 
 **Fix:** Ensure scripts are loaded in this order:
 ```html
-<script src="../config/config.js"></script>
+<script src="config/config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../assets/js/supabase.js"></script>
+<script src="assets/js/supabase.js"></script>
 ```
 
 ---
@@ -235,7 +235,7 @@ Set in Vercel dashboard → Settings → Environment Variables.
 
 ### Local Testing
 
-1. Fill in `config/config.js` with your credentials
+1. Fill in `public/config/config.js` with your credentials
 2. Open `public/index.html` in a browser
 3. Or use a local server:
    ```bash
@@ -245,9 +245,9 @@ Set in Vercel dashboard → Settings → Environment Variables.
 
 ### Making Changes
 
-- **Styles:** Edit `assets/css/style.css` (uses CSS custom properties)
-- **Auth logic:** Edit `assets/js/auth.js`
-- **Dashboard logic:** Edit `assets/js/dashboard.js`
+- **Styles:** Edit `public/assets/css/style.css` (uses CSS custom properties)
+- **Auth logic:** Edit `public/assets/js/auth.js`
+- **Dashboard logic:** Edit `public/assets/js/dashboard.js`
 - **Database schema:** Modify `docs/SETUP_SUPABASE.sql` and re-run in SQL Editor
 
 ---
