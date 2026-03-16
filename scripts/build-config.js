@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const configPath = path.join(__dirname, '..', 'config', 'config.js');
+const configPath = path.join(__dirname, '..', 'public', 'config', 'config.js');
 
 // Read environment variables
 const SUPABASE_URL = process.env.SUPABASE_URL || '';
