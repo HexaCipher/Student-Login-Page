@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal — Sign In</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- ── Login Card ── -->
+    <main class="card" role="main">
+
+      <!-- Graduation cap icon -->
+      <div class="card-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/>
+        </svg>
+      </div>
+
+      <h1 class="card-title">Student Portal</h1>
+      <p class="card-subtitle">Sign in to continue</p>
+
+      <!-- ── Tab Switcher: Email / Student ID ── -->
+      <div class="tab-switcher" role="tablist" aria-label="Login method">
+        <button
+          id="tab-email"
+          class="tab-btn active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="section-email"
+          type="button"
+        >
+          Email
+        </button>
+        <button
+          id="tab-studentid"
+          class="tab-btn"
+          role="tab"
+          aria-selected="false"
+          aria-controls="section-studentid"
+          type="button"
+        >
+          Student ID
+        </button>
+      </div>
+
+      <!-- ── Login Form ── -->
+      <form id="login-form" novalidate>
+
+        <!-- Email section (shown by default) -->
+        <div id="section-email" role="tabpanel" aria-labelledby="tab-email">
+          <div class="form-group">
+            <label class="form-label" for="input-email">Email address</label>
+            <input
+              id="input-email"
+              class="form-input"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              inputmode="email"
+            />
+          </div>
+        </div>
+
+        <!-- Student ID section (hidden by default) -->
+        <div id="section-studentid" class="hidden" role="tabpanel" aria-labelledby="tab-studentid">
+          <div class="form-group">
+            <label class="form-label" for="input-studentid">Student ID</label>
+            <input
+              id="input-studentid"
+              class="form-input"
+              type="text"
+              placeholder="e.g. STU2024001"
+              autocomplete="username"
+              autocapitalize="characters"
+              spellcheck="false"
+            />
+          </div>
+        </div>
+
+        <!-- Password (shared by both modes) -->
+        <div class="form-group">
+          <label class="form-label" for="input-password">Password</label>
+          <div class="input-wrapper">
+            <input
+              id="input-password"
+              class="form-input"
+              type="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+            />
+            <!-- Eye toggle button -->
+            <button
+              id="toggle-password"
+              class="toggle-password"
+              type="button"
+              aria-label="Show password"
+            >
+              <!-- Eye-open icon (password is currently hidden) -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Forgot password link -->
+        <div class="forgot-row">
+          <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <!-- Error message -->
+        <div id="login-error" class="msg-error" role="alert" aria-live="polite"></div>
+
+        <!-- Sign In button -->
+        <button id="btn-signin" class="btn-primary" type="button">
+          Sign In
+        </button>
+
+      </form><!-- /#login-form -->
+
+      <!-- ── Sign up link ── -->
+      <p class="auth-switch">
+        Don't have an account? <a href="signup.html">Sign up</a>
+      </p>
+
+    </main><!-- /.card -->
+
+    <!-- ── Footer ── -->
+    <p class="page-footer">
+      By signing in, you agree to your institution's terms of service.
+    </p>
+
+  </div><!-- /.page-wrapper -->
+
+  <!-- ── Scripts ── -->
+  <!-- Config must load first, then Supabase CDN, then our scripts -->
+  <script src="../config/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/auth.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal — Create Account</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- ── Sign Up Card ── -->
+    <main class="card" role="main">
+
+      <!-- Graduation cap icon -->
+      <div class="card-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/>
+        </svg>
+      </div>
+
+      <h1 class="card-title">Create Account</h1>
+      <p class="card-subtitle">Register as a new student</p>
+
+      <!-- ── Sign Up Form ── -->
+      <form id="signup-form" novalidate>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="su-fullname">Full name</label>
+          <input
+            id="su-fullname"
+            class="form-input"
+            type="text"
+            placeholder="e.g. Jane Smith"
+            autocomplete="name"
+            autocapitalize="words"
+            spellcheck="false"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="su-email">Email address</label>
+          <input
+            id="su-email"
+            class="form-input"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            inputmode="email"
+          />
+        </div>
+
+        <!-- Student ID (optional) -->
+        <div class="form-group">
+          <label class="form-label" for="su-studentid">
+            Student ID
+            <span style="font-weight:400; color:var(--text-muted);">(optional)</span>
+          </label>
+          <input
+            id="su-studentid"
+            class="form-input"
+            type="text"
+            placeholder="e.g. STU2024001"
+            autocapitalize="characters"
+            spellcheck="false"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label" for="su-password">Password</label>
+          <div class="input-wrapper">
+            <input
+              id="su-password"
+              class="form-input"
+              type="password"
+              placeholder="At least 8 characters"
+              autocomplete="new-password"
+            />
+            <button
+              id="su-toggle-password"
+              class="toggle-password"
+              type="button"
+              aria-label="Show password"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <!-- Inline password strength hint -->
+          <p id="su-pw-hint" class="field-hint"></p>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label class="form-label" for="su-confirm-password">Confirm password</label>
+          <div class="input-wrapper">
+            <input
+              id="su-confirm-password"
+              class="form-input"
+              type="password"
+              placeholder="Re-enter your password"
+              autocomplete="new-password"
+            />
+            <button
+              id="su-toggle-confirm"
+              class="toggle-password"
+              type="button"
+              aria-label="Show confirm password"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Error message -->
+        <div id="signup-error" class="msg-error" role="alert" aria-live="polite"></div>
+
+        <!-- Create Account button -->
+        <button id="btn-signup" class="btn-primary" type="button" style="margin-top:4px;">
+          Create Account
+        </button>
+
+      </form><!-- /#signup-form -->
+
+      <!-- ── Success State (shown after Supabase sends confirmation email) ── -->
+      <div id="signup-success" class="success-state">
+
+        <div class="success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor"
+               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+
+        <p class="success-title">Check your inbox</p>
+        <p class="success-body">
+          We sent a confirmation link to<br />
+          <strong id="su-confirmed-email"></strong><br /><br />
+          Click the link in that email to activate your account,
+          then come back and sign in.
+        </p>
+
+        <a href="index.html"
+           class="btn-primary"
+           style="margin-top:4px; text-decoration:none; line-height:42px;
+                  display:flex; align-items:center; justify-content:center; width:100%;">
+          Go to Sign In
+        </a>
+
+      </div><!-- /#signup-success -->
+
+      <!-- ── Footer link ── -->
+      <p class="auth-switch" id="signup-footer-link">
+        Already have an account?
+        <a href="index.html">Sign in</a>
+      </p>
+
+    </main><!-- /.card -->
+
+  </div><!-- /.page-wrapper -->
+
+  <!-- ── Scripts ── -->
+  <script src="../config/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/auth.js"></script>
+
+</body>
+</html>

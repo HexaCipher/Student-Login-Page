@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal — Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- ── Dashboard Card ── -->
+    <main class="card" role="main">
+
+      <!-- Profile Avatar -->
+      <div class="profile-avatar-wrap">
+        <!--
+          Two avatar elements — only one is shown at a time.
+          dashboard.js shows the <img> if a photo URL is available,
+          otherwise shows the .avatar-initial circle.
+        -->
+        <img
+          id="profile-avatar-img"
+          class="profile-avatar hidden"
+          src=""
+          alt="Profile photo"
+          referrerpolicy="no-referrer"
+        />
+        <div
+          id="profile-avatar-initial"
+          class="avatar-initial hidden"
+          aria-hidden="true"
+        ></div>
+      </div>
+
+      <!-- Name & Email -->
+      <p id="profile-name" class="profile-name"></p>
+      <p id="profile-email" class="profile-email"></p>
+
+      <!-- Divider -->
+      <hr class="hr-divider" />
+
+      <!-- Status Badge -->
+      <div class="status-badge" aria-label="Session status: logged in">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Logged in</span>
+      </div>
+
+      <!-- Spacer -->
+      <div style="height: 20px;"></div>
+
+      <!-- Sign Out -->
+      <button id="btn-signout" class="btn-outline" type="button">
+        Sign Out
+      </button>
+
+    </main><!-- /.card -->
+
+  </div><!-- /.page-wrapper -->
+
+  <!-- ── Scripts ── -->
+  <script src="../config/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+
+</body>
+</html>
